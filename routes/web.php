@@ -18,6 +18,7 @@ Route::get('/admin/flot',[AdminController::class,'showFlotChart'])->name('flot')
 Route::get('/admin/moris',[AdminController::class,'showMorisChart'])->name('moris') ;
 Route::get('/admin/table',[AdminController::class,'showTable'])->name('table') ;
 Route::get('/admin/forms',[AdminController::class,'showForms'])->name('forms') ;
+Route::get('/admin/forms/product',[AdminController::class,'product'])->name('forms/product') ;
 Route::get('/admin/panels-wells',[AdminController::class,'showPanelWell'])->name('panel') ;
 Route::get('/admin/buttons',[AdminController::class,'showButton'])->name('buttons') ;
 Route::get('/admin/notifications',[AdminController::class,'showNotifi'])->name('noti') ;
