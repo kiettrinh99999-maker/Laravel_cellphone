@@ -1,3 +1,4 @@
+
 @extends('layouts.layout')
 @section('active_home')
 active

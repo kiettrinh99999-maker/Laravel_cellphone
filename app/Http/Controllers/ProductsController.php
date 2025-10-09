@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;   
-use App\Models\Product;            
+
+ use App\Models\DB;
 
 class ProductsController extends Controller
 {
     
     public function home()
     {
-        $products = DB::table('Products')->limit(10)->get();
-        return view('home', compact('products'));
 
+        // return view('home'); //home
+        $db = new DB('localhost', 'laravel', 'root', '');
+        return 'Đã gọi constructor DB!';
     }
 
      public function shopPage()
