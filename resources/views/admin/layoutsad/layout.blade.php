@@ -292,7 +292,15 @@
                             <a href="{{route('table')}}"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
                         <li>
-                            <a href="{{route('forms')}}"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            <a href=""><i class="fa fa-edit fa-fw"></i> Forms<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('forms/product')}}">Products</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('forms')}}">Categories</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
