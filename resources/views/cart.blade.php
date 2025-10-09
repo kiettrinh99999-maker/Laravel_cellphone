@@ -136,7 +136,7 @@ Cart
                                     <li class="product">
                                         <a href="single-product.html">
                                             <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="{{asset('img/product-2.jpg')}}">
-   ')}}                                         <h3>Ship Your Idea</h3>
+                                     <h3>Ship Your Idea</h3>
                                             <span class="price"><span class="amount">£20.00</span></span>
                                         </a>
 
@@ -146,7 +146,7 @@ Cart
                                     <li class="product">
                                         <a href="single-product.html">
                                             <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="{{asset('img/product-4.jpg')}}">
-   ')}}                                         <h3>Ship Your Idea</h3>
+                                      <h3>Ship Your Idea</h3>
                                             <span class="price"><span class="amount">£20.00</span></span>
                                         </a>
 

@@ -49,5 +49,7 @@ class AdminController extends Controller
     public function showLogin(){
         return view('admin.login');
     }
-    
+    public function product(){
+        return view('admin.product');
+    }
 }
