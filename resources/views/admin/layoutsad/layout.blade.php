@@ -295,7 +295,7 @@
                             <a href=""><i class="fa fa-edit fa-fw"></i> Forms<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('forms/product')}}">Products</a>
+                                    <a href="{{route('forms.product')}}">Products</a>
                                 </li>
                                 <li>
                                     <a href="{{route('forms')}}">Categories</a>
