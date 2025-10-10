@@ -13,7 +13,7 @@ class ProductsController extends Controller
     {
 
         // return view('home'); //home
-        $db = new DB('localhost', 'laravel', 'root', '');
+        $db = new DB('localhost', 'main_database', 'user_laravel', '');
         return 'Đã gọi constructor DB!';
     }
 
