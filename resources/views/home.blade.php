@@ -7,7 +7,7 @@ active
 @endsection
 @section('content')
     <section>
-       <div class="slider-area">
+       {{-- <div class="slider-area">
         	<!-- Slider -->
 			<div class="block-slider block-slider4">
 				<ul class="" id="bxslider-home4">
@@ -21,7 +21,8 @@ active
 							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
 						</div>
 					</li>
-					<li><img src="img/h4-slide2.png" alt="Slide">
+					<li>
+                        <img src="img/h4-slide2.png" alt="Slide">
 						<div class="caption-group">
 							<h2 class="caption title">
 								by one, get one <span class="primary">50% <strong>off</strong></span>
@@ -51,7 +52,30 @@ active
 				</ul>
 			</div>
 			<!-- ./Slider -->
-    </div> <!-- End slider area -->
+    </div> <!-- End slider area --> --}}
+
+        <div class="slider-area">
+            <div class="block-slider block-slider4">
+                <ul id="bxslider-home4">
+                    @foreach ($products as $product)
+                        <li>
+                            <img src="{{ ($product['Image']) }}" alt="">
+                            <div class="caption-group">
+                                <h2 class="caption title">
+                                    Apple <span class="primary">Store <strong>Ipod</strong></span>
+                                </h2>
+                                <h4 class="caption subtitle">& Phone</h4>
+                                <a class="caption button-radius" href="#">
+                                    <span class="icon"></span>Shop now
+                                </a>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+
+
 
         <div class="promo-area">
             <div class="zigzag-bottom"></div>
