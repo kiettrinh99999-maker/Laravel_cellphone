@@ -1,4 +1,3 @@
-
 @extends('layouts.layout')
 @section('active_home')
 active
@@ -8,70 +7,51 @@ active
 @endsection
 @section('content')
     <section>
-
-        <div class="slider-area">
-            <div class="slider-container">
-                <!-- Slide 1 -->
-                <div class="slide slide-1 active">
-                    <img src="img/h4-slide.png" alt="Slide">
-                    <div class="caption-group">
-                        <h2 class="caption title">
-                            iPhone <span class="primary">6 <strong>Plus</strong></span>
-                        </h2>
-                        <h4 class="caption subtitle">Dual SIM Technology</h4>
-                        <a class="caption button-radius" href="#"><span class="icon"></span>Mua ngay</a>
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="slide slide-2">
-                    <img src="img/h4-slide2.png" alt="Slide">
-                    <div class="caption-group">
-                        <h2 class="caption title">
-                            Mua một, được một <span class="primary">50% <strong>giảm</strong></span>
-                        </h2>
-                        <h4 class="caption subtitle">Đồ dùng học tập & ba lô</h4>
-                        <a class="caption button-radius" href="#"><span class="icon"></span>Khám phá</a>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="slide slide-3">
-                    <img src="img/h4-slide3.png" alt="Slide">
-                    <div class="caption-group">
-                        <h2 class="caption title">
-                            Apple <span class="primary">Store <strong>iPod</strong></span>
-                        </h2>
-                        <h4 class="caption subtitle">Sản phẩm được lựa chọn</h4>
-                        <a class="caption button-radius" href="#"><span class="icon"></span>Xem thêm</a>
-                    </div>
-                </div>
-
-                <!-- Slide 4 -->
-                <div class="slide slide-4">
-                    <img src="img/h4-slide4.png" alt="Slide">
-                    <div class="caption-group">
-                        <h2 class="caption title">
-                            Apple <span class="primary">Store <strong>iPhone</strong></span>
-                        </h2>
-                        <h4 class="caption subtitle">& Điện thoại thông minh</h4>
-                        <a class="caption button-radius" href="#"><span class="icon"></span>Mua sắm</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation -->
-            <div class="slider-nav">
-                <div class="nav-dot active" data-slide="0"></div>
-                <div class="nav-dot" data-slide="1"></div>
-                <div class="nav-dot" data-slide="2"></div>
-                <div class="nav-dot" data-slide="3"></div>
-            </div>
-
-            <!-- Arrows -->
-            <div class="slider-arrow prev"></div>
-            <div class="slider-arrow next"></div>
-        </div>
+       <div class="slider-area">
+        	<!-- Slider -->
+			<div class="block-slider block-slider4">
+				<ul class="" id="bxslider-home4">
+					<li>
+						<img src="img/h4-slide.png" alt="Slide">
+						<div class="caption-group">
+							<h2 class="caption title">
+								iPhone <span class="primary">6 <strong>Plus</strong></span>
+							</h2>
+							<h4 class="caption subtitle">Dual SIM</h4>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+						</div>
+					</li>
+					<li><img src="img/h4-slide2.png" alt="Slide">
+						<div class="caption-group">
+							<h2 class="caption title">
+								by one, get one <span class="primary">50% <strong>off</strong></span>
+							</h2>
+							<h4 class="caption subtitle">school supplies & backpacks.*</h4>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+						</div>
+					</li>
+					<li><img src="img/h4-slide3.png" alt="Slide">
+						<div class="caption-group">
+							<h2 class="caption title">
+								Apple <span class="primary">Store <strong>Ipod</strong></span>
+							</h2>
+							<h4 class="caption subtitle">Select Item</h4>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+						</div>
+					</li>
+					<li><img src="img/h4-slide4.png" alt="Slide">
+						<div class="caption-group">
+						  <h2 class="caption title">
+								Apple <span class="primary">Store <strong>Ipod</strong></span>
+							</h2>
+							<h4 class="caption subtitle">& Phone</h4>
+							<a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- ./Slider -->
+    </div> <!-- End slider area -->
 
         <div class="promo-area">
             <div class="zigzag-bottom"></div>
@@ -446,98 +426,3 @@ active
     </section>
 
 @endsection
-
-<script>
-    class ModernSlider {
-        constructor() {
-            this.slides = document.querySelectorAll('.slide');
-            this.dots = document.querySelectorAll('.nav-dot');
-            this.prevBtn = document.querySelector('.slider-arrow.prev');
-            this.nextBtn = document.querySelector('.slider-arrow.next');
-            this.currentSlide = 0;
-            this.totalSlides = this.slides.length;
-            this.isAnimating = false;
-            this.autoPlayInterval = null;
-
-            this.init();
-        }
-
-        init() {
-            this.bindEvents();
-            this.startAutoPlay();
-        }
-
-        bindEvents() {
-            // Dot navigation
-            this.dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => this.goToSlide(index));
-            });
-
-            // Arrow navigation
-            this.prevBtn.addEventListener('click', () => this.prevSlide());
-            this.nextBtn.addEventListener('click', () => this.nextSlide());
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') this.prevSlide();
-                if (e.key === 'ArrowRight') this.nextSlide();
-            });
-
-            // Pause on hover
-            const sliderArea = document.querySelector('.slider-area');
-            sliderArea.addEventListener('mouseenter', () => this.stopAutoPlay());
-            sliderArea.addEventListener('mouseleave', () => this.startAutoPlay());
-        }
-
-        goToSlide(slideIndex) {
-            if (this.isAnimating || slideIndex === this.currentSlide) return;
-
-            this.isAnimating = true;
-
-            // Update slides
-            this.slides[this.currentSlide].classList.remove('active');
-            this.slides[this.currentSlide].classList.add('prev');
-
-            setTimeout(() => {
-                this.slides[this.currentSlide].classList.remove('prev');
-                this.slides[slideIndex].classList.add('active');
-
-                // Update dots
-                this.dots[this.currentSlide].classList.remove('active');
-                this.dots[slideIndex].classList.add('active');
-
-                this.currentSlide = slideIndex;
-                this.isAnimating = false;
-            }, 100);
-        }
-
-        nextSlide() {
-            const nextIndex = (this.currentSlide + 1) % this.totalSlides;
-            this.goToSlide(nextIndex);
-        }
-
-        prevSlide() {
-            const prevIndex = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-            this.goToSlide(prevIndex);
-        }
-
-        startAutoPlay() {
-            this.stopAutoPlay();
-            this.autoPlayInterval = setInterval(() => {
-                this.nextSlide();
-            }, 4000);
-        }
-
-        stopAutoPlay() {
-            if (this.autoPlayInterval) {
-                clearInterval(this.autoPlayInterval);
-                this.autoPlayInterval = null;
-            }
-        }
-    }
-
-    // Initialize slider when DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-        new ModernSlider();
-    });
-</script>
