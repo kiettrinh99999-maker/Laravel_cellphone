@@ -12,6 +12,17 @@ require __DIR__ . '/user/shopPage.php';
 require __DIR__ . '/user/dashboard.php';
 // require __DIR__ . '/user/admin.php';
 
+// page login
+// Route::get('/login', function () {
+//     return view('login/login');
+// });
+// AJAX for login page
+// Route::post('/ajax-login', [LoginController::class, 'ajaxLogin'])->name('ajax.login');
+
+
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send')
+->middleware(ValidateContact::class);;
+
 Route::prefix('admin1')->group(function () {
     require __DIR__ . '/admin/authen.php';
     require __DIR__ . '/admin/blank.php';
