@@ -26,6 +26,7 @@ Route::get('/admin/icons',[AdminController::class,'showIcons'])->name('icons') ;
 Route::get('/admin/grid',[AdminController::class,'showGrid'])->name('grid') ;
 Route::get('/admin/blank',[AdminController::class,'showBlank'])->name('blank');
 // Route::get('/login',[AdminController::class,'showLogin'])->name('login');
+
 // page login
 Route::get('/login', function () {
     return view('login/login');
