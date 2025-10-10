@@ -93,40 +93,6 @@ active
                         <div class="latest-product">
                             <h2 class="section-title">Latest Products</h2>
                             <div class="product-carousel">
-                            @foreach($products as $product)
-                                    <div class="single-product">
-                                        <div class="product-f-image">
-                                            <img src="img/product-3.jpg" alt="img/product-3.jpg">
-                                            <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link">
-                                                    <i class="fa fa-shopping-cart"></i> Thêm vào giỏ
-                                                </a>
-                                                <a href="" class="view-details-link">
-                                                    <i class="fa fa-link"></i> Xem chi tiết
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <h2><a href="">{{ $product->Name }}</a></h2>
-
-                                        <div class="product-carousel-price">
-                                            <ins>${{ number_format($product->Price, 2) }}</ins>
-                                            @if(isset($product->Sale))
-                                                <del>${{ number_format($product->Sale, 2) }}</del>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @endforeach
-
-
-
-
-
-
-
-
-
-
                                 <div class="single-product">
                                     <div class="product-f-image">
                                         <img src="img/product-1.jpg" alt="">
