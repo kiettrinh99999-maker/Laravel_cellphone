@@ -6,23 +6,43 @@ use Exception;
 
 class DB
 {
+    private static $instance = null; // biến tĩnh giữ kết nối duy nhất
     private $conn;
 
-    public function __construct($host, $db, $user, $pass)
+    private function __construct()
     {
+        $host = env('host');
+        $db   = env('db');
+        $user = env('user');
+        $pass = env('pass');
+
         try {
             $options = [
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ];
-
             $this->conn = new PDO("mysql:host={$host};dbname={$db}", $user, $pass, $options);
-            echo "Kết nối thành công!"; // chỉ bật khi cần test
         } catch (Exception $e) {
-            echo "Kết nối thất bại: " . $e->getMessage();
+            die("Kết nối thất bại: " . $e->getMessage());
         }
     }
 
+    // Hàm lấy thể hiện duy nhất (singleton)
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new DB();
+        }
+        return self::$instance;
+    }
+
+    // Lấy PDO connection gốc nếu cần
+    public function getConnection()
+    {
+        return $this->conn;
+    }
+
+    // Các hàm CRUD y như bạn viết
     public function getAll($sql)
     {
         $stm = $this->conn->prepare($sql);
@@ -45,7 +65,7 @@ class DB
 
         $sql = "INSERT INTO $table ($cols) VALUES ($placeholders)";
         $stm = $this->conn->prepare($sql);
-        return $stm->execute($data); // trả về true/false
+        return $stm->execute($data);
     }
 
     public function update($table, $data = [], $condition = '')
@@ -76,4 +96,3 @@ class DB
         return $stm->execute();
     }
 }
-
