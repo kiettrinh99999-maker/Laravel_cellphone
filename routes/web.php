@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Middleware\ValidateContact;
 
-// Gộp route của user và admin
+require __DIR__ . '/user/login.php';
+require __DIR__ . '/user/register.php';
 require __DIR__ . '/user/singleProduct.php';
 require __DIR__ . '/user/cart.php';
 require __DIR__ . '/user/contact.php';
@@ -10,7 +13,14 @@ require __DIR__ . '/user/checkout.php';
 require __DIR__ . '/user/category.php';
 require __DIR__ . '/user/shopPage.php';
 require __DIR__ . '/user/dashboard.php';
+
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send')
+->middleware(ValidateContact::class);;
+
+
+
 // require __DIR__ . '/user/admin.php';
+
 
 // page login
 // Route::get('/login', function () {
@@ -20,8 +30,7 @@ require __DIR__ . '/user/dashboard.php';
 // Route::post('/ajax-login', [LoginController::class, 'ajaxLogin'])->name('ajax.login');
 
 
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send')
-->middleware(ValidateContact::class);;
+
 
 Route::prefix('admin1')->group(function () {
     require __DIR__ . '/admin/authen.php';
