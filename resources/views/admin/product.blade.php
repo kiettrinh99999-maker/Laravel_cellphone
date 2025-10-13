@@ -1,51 +1,126 @@
 @extends("admin.layoutsad.layout")
-@section("content")
-<div class="container">
+@section('linkjs')
+  <!-- CKEditor CDN -->
+  <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+  <script>
+      CKEDITOR.replace('description');
+      extraPlugins: 'base64image'
+  </script>
+  <script>
+    const category = document.getElementById('category');
+    const addBox = document.getElementById('addBox');
 
-<form class="row g-3">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
+    category.addEventListener('change', () => {
+      addBox.hidden = category.value !== 'add';
+    });
+  </script>
+@endsection
+
+@section("content")
+<div id="page-wrapper">
+  <div class="container">
+    <div class="">
+      <form class="">
+        <h2 class="bg-primary text-center fs-3 fw-bold text-white py-3">Add Product</h2>
+        <div class="form-group row mb-3">
+          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="name">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="description" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="description" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="price" class="col-sm-2 col-form-label">Price</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="price">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="sale" class="col-sm-2 col-form-label">Sale</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="sale">
+          </div>
+        </div>
+        <div class="form-group row mb-3 align-items-center">
+          <label for="image1" class="col-sm-2 col-form-label">Image 1</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="file" id="image1">
+          </div>
+        </div>
+        <div class="form-group row mb-3 align-items-center">
+          <label for="image2" class="col-sm-2 col-form-label">Image 2</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="file" id="image2">
+          </div>
+        </div>
+        <div class="form-group row mb-3 align-items-center">
+          <label for="image3" class="col-sm-2 col-form-label">Image 3</label>
+          <div class="col-sm-10">
+            <input class="form-control" type="file" id="image3">
+          </div>
+        </div>
+        <div class="form-group row mb-3 align-items-center">
+          <label for="category" class="col-sm-2 col-form-label mb-0">Category</label>
+          <div class="col-sm-8">
+            <select class="form-control" id="category">
+              <option value="1">Category 1</option>
+              <option value="0">Category 2</option>
+              <option value="add">Add category</option>
+            </select>
+          </div>
+          <!-- <div class="col-sm-2">
+            <button type="button" class="btn btn-primary w-100">Add Category</button>
+          </div> -->
+        </div>
+        <!-- test -->
+        <div class="form-group row mb-3 align-items-center" id="addBox" hidden>
+          <label for="addCategory" class="col-sm-2 col-form-label mb-0">Add Category</label>
+          <div class="col-sm-7">
+            <input class="form-control" type="text" placeholder="Nhập loại mới">
+          </div>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-primary w-100">Add Category</button>
+          </div>
+        </div>
+
+        
+        <div class="form-group row mb-3">
+          <label for="tag" class="col-sm-2 col-form-label">Tag</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="tag">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-sm-2 control-label">Latest</label>
+          <div class="col-sm-10">
+            <label class="radio-inline">
+              <input type="radio" name="status" value="1" checked> True
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="status" value="0"> False
+            </label>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="status" class="col-sm-2 col-form-label">Status</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="status">
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="submit" class="btn btn-primary">Cancel</button>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </div>
-</form>
 </div>
-
 @endsection
