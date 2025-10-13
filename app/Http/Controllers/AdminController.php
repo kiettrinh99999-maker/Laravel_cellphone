@@ -52,4 +52,16 @@ class AdminController extends Controller
     public function product(){
         return view('admin.product');
     }
+
+    public function showTableProduct(){
+        return view('admin.tableProduct');
+    }
+
+    public function showTableCategory(){
+        return view('admin.tableCategory');
+    }
+
+    public function showTableUser(){
+        return view('admin.tableUser');
+    }
 }

@@ -289,7 +289,18 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{route('table')}}"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href=""><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('table.product')}}">Products</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('table.category')}}">Categories</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('table.user')}}">Users</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href=""><i class="fa fa-edit fa-fw"></i> Forms<span class="fa arrow"></span></a>
