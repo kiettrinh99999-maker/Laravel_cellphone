@@ -11,9 +11,10 @@ class DashbroadController extends Controller
     public function home()
     {
 
-        $db = DB::getInstance(); 
-        $sql = "SELECT Image FROM products WHERE id IN ( 112,111)";
-        $products = $db->getAll($sql);
-        return view('home',compact('products')); //home
+        
+        $db = DB::getInstance();
+        $products = $db->getAll('products'); // Lấy tất cả sản phẩm
+        return view('home', compact('products'));
     }
+
 }
