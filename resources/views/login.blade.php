@@ -9,6 +9,7 @@ Login
       <h2>Sign In</h2>
 
       <form id="loginForm" method="post" action="#">
+        @csrf
         <div class="form-group">
           <label for="username"><i class="fa fa-user"></i> Username</label>
           <input
@@ -45,7 +46,7 @@ Login
 
         <div class="bottom-text">
           Don’t have an account?
-          <a href="register.html">Create one</a>
+          <a href="{{route('register')}}">Create one</a>
         </div>
       </form>
     </div>
