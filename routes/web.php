@@ -32,7 +32,7 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 
 
 
-Route::prefix('admin1')->group(function () {
+Route::prefix('admin1')->middleware('IsAdmin')->group(function () {
     require __DIR__ . '/admin/authen.php';
     require __DIR__ . '/admin/blank.php';
     require __DIR__ . '/admin/buttons.php';
