@@ -42,19 +42,54 @@ class DB
         return $this->conn;
     }
 
-    // Các hàm CRUD y như bạn viết
-    public function getAll($sql)
+    public function getAll($table, $options = [])
     {
+        $sql = "SELECT ";
+
+        // Cột cần lấy
+        $sql .= isset($options['columns']) ? $options['columns'] : '*';
+        $sql .= " FROM {$table}";
+
+        // JOIN
+        if (!empty($options['join'])) {
+            $sql .= " " . $options['join'];
+        }
+
+        // WHERE
+        if (!empty($options['where'])) {
+            $sql .= " WHERE " . $options['where'];
+        }
+
+        // GROUP BY
+        if (!empty($options['groupBy'])) {
+            $sql .= " GROUP BY " . $options['groupBy'];
+        }
+
+        // HAVING
+        if (!empty($options['having'])) {
+            $sql .= " HAVING " . $options['having'];
+        }
+
+        // ORDER BY
+        if (!empty($options['orderBy'])) {
+            $sql .= " ORDER BY " . $options['orderBy'];
+        }
+
+        // LIMIT
+        if (!empty($options['limit'])) {
+            $sql .= " LIMIT " . $options['limit'];
+        }
+
         $stm = $this->conn->prepare($sql);
-        $stm->execute();
+        $stm->execute($options['params'] ?? []);
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getOne($sql)
+    public function getOne($table, $options = [])
     {
-        $stm = $this->conn->prepare($sql);
-        $stm->execute();
-        return $stm->fetch(PDO::FETCH_ASSOC);
+        $options['limit'] = 1;
+        $result = $this->getAll($table, $options);
+        return $result[0] ?? null;
     }
 
     public function insert($table, $data)
