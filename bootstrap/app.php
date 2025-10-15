@@ -11,8 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
-        $middleware->append(\App\Http\Middleware\LogRequestMiddleware::class);
+        // middleware se ghi log vao storage/logs/request.log
+        // $middleware->append(\App\Http\Middleware\LogRequest::class);
+        // $middleware->alias([
+        //     'IsAdmin' => \App\Http\Middleware\IsAdmin::class,
+        // ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
