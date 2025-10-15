@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class LogRequestMiddleware
+class LogRequest
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,8 @@ class LogRequestMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Thời gian hiện tại
-        $date = now()->format('d/m/Y H:i:s');
+       // Thời gian hiện tại
+        $date = now()->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i:s');
 
         //Mẫu log
         $log = "--------------------------------------\n";
