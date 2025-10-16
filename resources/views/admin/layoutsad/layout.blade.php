@@ -309,7 +309,7 @@
                                     <a href="{{route('forms.product')}}">Products</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('forms')}}">Categories</a>
+                                    <a href="{{route('forms.category')}}">Categories</a>
                                 </li>
                             </ul>
                         </li>

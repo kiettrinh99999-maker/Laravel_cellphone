@@ -49,7 +49,7 @@
                             <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                             <li><a href="{{route('scard')}}"><i class="fa fa-user"></i> My Cart</a></li>
                             <li><a href="{{route('scheckout')}}"><i class="fa fa-user"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="{{route('login')}}"><i class="fa fa-user"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
