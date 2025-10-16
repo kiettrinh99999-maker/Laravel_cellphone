@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Middleware\ValidateContact;
-
+use App\Http\Middleware\IsAdmin;
 require __DIR__ . '/user/login.php';
 require __DIR__ . '/user/register.php';
 require __DIR__ . '/user/singleProduct.php';
@@ -32,7 +32,7 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 
 
 
-Route::prefix('admin1')->middleware('IsAdmin')->group(function () {
+Route::prefix('admin1')->middleware(IsAdmin::class)->group(function () {
     require __DIR__ . '/admin/authen.php';
     require __DIR__ . '/admin/blank.php';
     require __DIR__ . '/admin/buttons.php';

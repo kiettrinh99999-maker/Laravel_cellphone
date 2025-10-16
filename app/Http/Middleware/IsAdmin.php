@@ -15,6 +15,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        echo "hello admin";
         return $next($request);
     }
 }
