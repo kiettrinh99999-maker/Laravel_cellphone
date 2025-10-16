@@ -31,7 +31,7 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 
 
 
-
+// middleware IsAdmin sẽ kiểm tra người sử dụng đường dẫn admin có phải admin hay không
 Route::prefix('admin1')->middleware(IsAdmin::class)->group(function () {
     require __DIR__ . '/admin/authen.php';
     require __DIR__ . '/admin/blank.php';
