@@ -11,7 +11,7 @@ Route::prefix('forms')->group(function () {
     Route::get('/product/{id}/edit',[ProductController::class, 'update'])->name('edit.product');
     Route::post('/product', [ProductController::class,'postForm'])->name('post.product');
     Route::post('/product/update', [ProductController::class,'postForm'])->name('update.product');
-
+    
     // config route add category
 
     Route::get('/category', [CategoryController::class, 'getForm'])->name('forms.category');
