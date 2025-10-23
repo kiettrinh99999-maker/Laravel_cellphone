@@ -83,4 +83,6 @@ class AdminController extends Controller
         // Redirect đến trang admin hoặc dashboard
         return redirect('/admin1');
     }
+
+    
 }

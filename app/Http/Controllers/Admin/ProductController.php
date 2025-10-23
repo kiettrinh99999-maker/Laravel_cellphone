@@ -13,9 +13,16 @@ class ProductController extends Controller
         return view("admin.product");
     }
     public function postForm(ValidateProduct $request){
-$product = $request->validated();
-print_r($product); // Hoặc var_dump($product);
-
+        $validated = $request->validate([
+            
+        ]);
+       
+        // $imagePath = null;
+        // if ($request->hasFile('image1')) {
+        //     $imagePath = $request->file('image1')->store('products', 'public');
+        // }
+        
+        return redirect()->back()->with('success', 'Add success');
     }
     public function update(Request $request){
         

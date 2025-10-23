@@ -22,29 +22,37 @@ class ValidateProduct extends FormRequest
     public function rules(): array
     {
         return [
-        'name' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'price' => 'required|numeric|min:0',
-        'sale' => 'nullable|numeric|min:0|lte:price',
+        // 'name' => 'required|string|max:255',
+        // 'description' => 'nullable|string',
+        // 'price' => 'required|numeric|min:0',
+        // 'sale' => 'nullable|numeric|min:0|lte:price',
 
-        'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'image3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // 'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // 'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // 'image3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
 
-        'category_id' => 'required|integer',
-        'tag' => 'nullable|string|max:255',
-        'latest' => 'required|boolean',
-        'status' => 'required|boolean',
+        // 'category_id' => 'required|integer',
+        // 'tag' => 'nullable|string|max:255',
+        // 'latest' => 'required|boolean',
+        // 'status' => 'required|boolean',
+        'name'        => 'required|string|max:255|unique:products,name',
+        'description' => 'nullable|string|max:5000',
+        'price'       => 'required|numeric|min:0',
+        'sale'        => 'nullable|numeric|min:0|lte:price',
+        'inpFile_1'      => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'new_category' =>'nullable',
+        'category_id' => 'required|not_in:add',
+        'tag'         => 'nullable|string|max:255',
+        'latest'      => 'required|boolean',
+        'status'      => 'required|boolean',   
+            
         ];
         }
         public function messages(): array
-    {
-        return [
-            'name.required' => 'Tên sản phẩm không được để trống.',
-            'price.required' => 'Giá sản phẩm là bắt buộc.',
-            'image1.image' => 'Ảnh phải đúng định dạng (jpeg, png...).',
-            'sale.lte' => 'Giá giảm không được lớn hơn giá gốc.',
-        ];
-    }
+        {
+            return [
+                
+            ];
+        }
 
 }

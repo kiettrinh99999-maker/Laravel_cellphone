@@ -31,6 +31,11 @@
     <div class="col-sm-10">
       <input type="text" class="form-control" id="name" name="name">
     </div>
+    @error('name')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
   <div class="form-group row mb-3">
@@ -38,6 +43,11 @@
     <div class="col-sm-10">
       <textarea class="form-control" id="description" name="description" rows="4"></textarea>
     </div>
+    @error('description')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
   <div class="form-group row mb-3">
@@ -45,6 +55,11 @@
     <div class="col-sm-10">
       <input type="number"  pattern="\d*" class="form-control" id="price" name="price">
     </div>
+    @error('price')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
   <div class="form-group row mb-3">
@@ -52,38 +67,65 @@
     <div class="col-sm-10">
       <input type="number" class="form-control" id="sale" name="sale">
     </div>
+    @error('sale')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
   <div class="form-group row mb-3 align-items-center">
     <label for="image1" class="col-sm-2 col-form-label">Image 1</label>
     <div class="col-sm-10">
-      <input class="form-control" type="file" id="image1" name="image1">
+      <input class="form-control" type="file" id="inpFile_1" name="inpFile_1">
+      <div class="img-wapper" >
+        <img class="img" id="img_inpFile_1" src="{{asset('img/images.png')}}" alt="" style="object-fit: cover; "/>
+      </div>
+
     </div>
+          <button  type="button" id="btn_add_inpFile" class="btn btn-primary ">
+            +
+          </button>
+    @error('inpFile_1')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
-  <div class="form-group row mb-3 align-items-center">
-    <label for="image2" class="col-sm-2 col-form-label">Image 2</label>
-    <div class="col-sm-10">
-      <input class="form-control" type="file" id="image2" name="image2">
-    </div>
-  </div>
-
-  <div class="form-group row mb-3 align-items-center">
-    <label for="image3" class="col-sm-2 col-form-label">Image 3</label>
-    <div class="col-sm-10">
-      <input class="form-control" type="file" id="image3" name="image3">
-    </div>
-  </div>
+  <div class="col-auto">
+          <input type="hidden" class="form-control" id="hd_inpFile" value="1" />
+          <input type="file" class="form-control" id="inpFile_1" />
+              <div class="img-wapper" >
+                <img
+                class="img"
+                id="img_inpFile_1"
+                src="./img/images.png"
+                alt=""
+                style="object-fit: cover; "
+              />
+          </div>
+        </div>
+        <div class="col-auto align-self-end">
+          <button type="button" id="btn_add_inpFile" class="btn btn-primary">
+            +
+          </button>
+        </div>
 
   <div class="form-group row mb-3 align-items-center">
     <label for="category" class="col-sm-2 col-form-label mb-0">Category</label>
     <div class="col-sm-8">
-      <select class="form-control" id="category" name="category_id">
+      <select class="form-control" id="category" name="category">
         <option value="1">Category 1</option>
         <option value="0">Category 2</option>
         <option value="add">Add category</option>
       </select>
     </div>
+    @error('category')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
   <div class="form-group row mb-3 align-items-center" id="addBox" hidden>
@@ -94,13 +136,24 @@
     <div class="col-sm-3">
       <button type="button" class="btn btn-primary w-100">Add Category</button>
     </div>
-  </div>
+    @error('new_category')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
+    </div>
+     
 
   <div class="form-group row mb-3">
     <label for="tag" class="col-sm-2 col-form-label">Tag</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="tag" name="tag">
     </div>
+    @error('tag')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
   <div class="form-group row mb-3">
@@ -113,6 +166,11 @@
         <input type="radio" name="latest" value="0"> False
       </label>
     </div>
+    @error('latest')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
   <div class="form-group row mb-3">
@@ -123,6 +181,11 @@
         <option value="0">Inactive</option>
       </select>
     </div>
+    @error('status')
+    <div class="text-danger">
+      {{$message}}
+    </div>
+    @enderror
   </div>
 
   <div class="text-center">
