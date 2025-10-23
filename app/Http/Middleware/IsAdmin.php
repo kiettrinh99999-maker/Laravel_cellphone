@@ -15,11 +15,11 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-         $user = session('user');// Lấy mảng user từ session
-        if (!$user || $user['role'] !== 'admin') {
-            // Nếu không phải admin thì redirect về login
-            return redirect()->route('loginAdmin');
-        } 
+        //  $user = session('user');// Lấy mảng user từ session
+        // if (!$user || $user['role'] !== 'admin') {
+        //     // Nếu không phải admin thì redirect về login
+        //     return redirect()->route('loginAdmin');
+        // } 
         return $next($request);
     }
 }
