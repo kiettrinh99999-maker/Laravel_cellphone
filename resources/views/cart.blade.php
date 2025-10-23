@@ -9,7 +9,6 @@ Cart
 <x-navcontent navcontent="Shop Cart"/>
 @endsection
 @section('content')
-  <body>  
     <div style="" class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">

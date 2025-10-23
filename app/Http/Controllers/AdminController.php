@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\DB;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -49,10 +49,6 @@ class AdminController extends Controller
     public function showLogin(){
         return view('admin.login');
     }
-    public function product(){
-        return view('admin.product');
-    }
-
     public function showTableProduct(){
         return view('admin.tableProduct');
     }
@@ -63,5 +59,28 @@ class AdminController extends Controller
 
     public function showTableUser(){
         return view('admin.tableUser');
+    }
+
+    public function login(Request $request){
+        // Lấy dữ liệu từ request (Laravel sẽ tự validate hoặc bạn có thể thêm validate)
+        $username = $request->input('username');
+        $password = $request->input('password');
+        // Khởi tạo DB (class bạn tự viết)
+        $db = DB::getInstance();
+        // Lấy user theo username
+        $user = $db->getOne('Users', [
+            'where' => 'username = :username',
+            'params' => ['username' => $username]
+        ]);
+        if (!$user) {
+            return back()->withErrors(['username' => 'User không tồn tại'])->withInput();
+        }
+        // Đăng nhập thành công, lưu user vào session bằng session helper
+        session(['user' => [
+            'id' => $user['id_user'],
+            'role' => $user['role']
+        ]]);
+        // Redirect đến trang admin hoặc dashboard
+        return redirect('/admin1');
     }
 }

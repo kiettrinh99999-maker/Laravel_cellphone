@@ -6,14 +6,15 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Contact extends Component
+class headerNav extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $headerNav;
+    public function __construct($headerNav="Default")
     {
-        //
+        $this->headerNav=$headerNav;
     }
 
     /**
@@ -21,6 +22,6 @@ class Contact extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.contact');
+        return view('components.header-nav');
     }
 }

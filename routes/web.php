@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Middleware\ValidateContact;
+use App\Http\Controllers\AdminController;
 use App\Http\Middleware\IsAdmin;
 require __DIR__ . '/user/login.php';
 require __DIR__ . '/user/register.php';
@@ -28,12 +29,10 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 // });
 // AJAX for login page
 // Route::post('/ajax-login', [LoginController::class, 'ajaxLogin'])->name('ajax.login');
-
-
-
-// middleware IsAdmin sẽ kiểm tra người sử dụng đường dẫn admin có phải admin hay không
+Route::get('/admin1/logind', [AdminController::class, 'showLogin'])->name('loginAdmin');
+Route::post('/admin1/logind', [AdminController::class, 'login'])->name('loginPost');
 Route::prefix('admin1')->middleware(IsAdmin::class)->group(function () {
-    require __DIR__ . '/admin/authen.php';
+    // require __DIR__ . '/admin/authen.php';
     require __DIR__ . '/admin/blank.php';
     require __DIR__ . '/admin/buttons.php';
     require __DIR__ . '/admin/dashbroad.php';

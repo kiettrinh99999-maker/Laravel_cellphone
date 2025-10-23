@@ -26,6 +26,8 @@ class DB
             die("Kết nối thất bại: " . $e->getMessage());
         }
     }
+    
+    
 
     // Hàm lấy thể hiện duy nhất (singleton)
     public static function getInstance()
