@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,18 +20,25 @@ class AdminController extends Controller
         return view('admin.moris');
     }
 
-     public function showTable(){
+    public function showTable(){
         return view('admin.table');
     }
-    public function showForms(){
-        return view('admin.forms');
-    }
+
+        public function showForms()
+        {
+            $db = DB::getInstance();
+            $categories = $db->getAll('Categories');
+            return view('admin.forms', compact('categories'));
+        }
+
     public function showPanelWell(){
         return view('admin.panels-wells');
     }
+
     public function showButton(){
         return view('admin.buttons');
     }
+
     public function showNotifi(){
         return view('admin.notifications');
     }
@@ -37,18 +46,23 @@ class AdminController extends Controller
     public function showTypo(){
         return view('admin.typography');
     }
+
     public function showIcons(){
         return view('admin.icons');
     }
+
     public function showGrid(){
         return view('admin.grid');
     }
+
     public function showBlank(){
         return view('admin.blank');
     }
+
     public function showLogin(){
         return view('admin.login');
     }
+
     public function showTableProduct(){
         return view('admin.tableProduct');
     }
@@ -61,26 +75,35 @@ class AdminController extends Controller
         return view('admin.tableUser');
     }
 
-    public function login(Request $request){
-        // Lấy dữ liệu từ request (Laravel sẽ tự validate hoặc bạn có thể thêm validate)
+
+    public function login(Request $request)
+    {
+        // if (session()->has('user')) {
+        //     return redirect('/admin1'); //trang dashboard
+        // }
+
         $username = $request->input('username');
         $password = $request->input('password');
-        // Khởi tạo DB (class bạn tự viết)
+
         $db = DB::getInstance();
-        // Lấy user theo username
         $user = $db->getOne('Users', [
             'where' => 'username = :username',
             'params' => ['username' => $username]
         ]);
+
         if (!$user) {
-            return back()->withErrors(['username' => 'User không tồn tại'])->withInput();
+            return back()->withErrors(['username' => 'User is not exists'])->withInput();
         }
-        // Đăng nhập thành công, lưu user vào session bằng session helper
+
+        if (hash('sha256', $password) !== $user['password']) {
+            return back()->withErrors(['password' => 'Password is incorrect'])->withInput();
+        }
+
         session(['user' => [
             'id' => $user['id_user'],
             'role' => $user['role']
         ]]);
-        // Redirect đến trang admin hoặc dashboard
+
         return redirect('/admin1');
     }
 }

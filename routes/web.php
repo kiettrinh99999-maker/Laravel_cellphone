@@ -1,48 +1,46 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContactController;
-use App\Http\Middleware\ValidateContact;
-use App\Http\Controllers\AdminController;
 use App\Http\Middleware\IsAdmin;
-require __DIR__ . '/user/login.php';
-require __DIR__ . '/user/register.php';
-require __DIR__ . '/user/singleProduct.php';
-require __DIR__ . '/user/cart.php';
-require __DIR__ . '/user/contact.php';
-require __DIR__ . '/user/checkout.php';
-require __DIR__ . '/user/category.php';
-require __DIR__ . '/user/shopPage.php';
-require __DIR__ . '/user/dashboard.php';
+use App\Http\Controllers\Admin\LoginAdminController;
 
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send')
-->middleware(ValidateContact::class);;
-
-
-
-// require __DIR__ . '/user/admin.php';
-
-
-// page login
-// Route::get('/login', function () {
-//     return view('login/login');
-// });
-// AJAX for login page
-// Route::post('/ajax-login', [LoginController::class, 'ajaxLogin'])->name('ajax.login');
-Route::get('/admin1/logind', [AdminController::class, 'showLogin'])->name('loginAdmin');
-Route::post('/admin1/logind', [AdminController::class, 'login'])->name('loginPost');
-Route::prefix('admin1')->middleware(IsAdmin::class)->group(function () {
-    // require __DIR__ . '/admin/authen.php';
-    require __DIR__ . '/admin/blank.php';
-    require __DIR__ . '/admin/buttons.php';
-    require __DIR__ . '/admin/dashbroad.php';
-    require __DIR__ . '/admin/flot.php';
-    require __DIR__ . '/admin/froms.php';
-    require __DIR__ . '/admin/grid.php';
-    require __DIR__ . '/admin/icons.php';
-    require __DIR__ . '/admin/moris.php';
-    require __DIR__ . '/admin/notifications.php';
-    require __DIR__ . '/admin/panels-wells.php';
-    require __DIR__ . '/admin/table.php';
-    require __DIR__ . '/admin/typography.php';
+Route::prefix('/')->group(function(){
+    require (__DIR__.'/dashboard.php');
 });
+
+Route::prefix('shop')->group(function(){
+    require (__DIR__.'/shop_page.php');
+});
+Route::prefix('single-product')->group(function(){
+    require (__DIR__.'/single_product.php');
+});
+
+Route::prefix('cart')->group(function(){
+    require (__DIR__.'/cart.php');
+});
+
+Route::prefix('checkout')->group(function(){
+    require (__DIR__.'/checkout.php');
+});
+
+Route::prefix('contact')->group(function(){
+    require (__DIR__.'/contact.php');
+});
+Route::prefix('orthers')->group(function(){
+    require (__DIR__.'/orthers.php');
+});
+
+    // require(__DIR__.'/admin/login_admin.php');
+Route::get('admind/login', [LoginAdminController::class, 'showLogin'])->name('formLogin');
+Route::post('admind/login', [LoginAdminController::class, 'postLogin'])->name('postLogin');
+
+Route::prefix('admind')->middleware('isAdmin')->group(function(){
+    require (__DIR__.'/admin/logout_admin.php');
+    require (__DIR__.'/admin/dashboard.php');
+    require(__DIR__.'/admin/productAdmin.php');
+});
+// Route::prefix('api')->middleware('isAdmin')->group(function(){
+//     require (__DIR__.'/admin/dashboard.php');
+//     require(__DIR__.'/admin/productAdmin.php');
+// });
+

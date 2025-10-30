@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 class ShopPageController extends Controller
 {
-    public function shopPage()
-    {
-        return view('shoppage'); 
-    } 
+    public function index()  {
+        return view('shop_page');
+    }
 }
