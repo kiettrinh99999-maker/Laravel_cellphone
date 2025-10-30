@@ -1,34 +1,46 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\ValidateContact;
-Route::get('/',[ProductsController::class,'home'] )->name('home');
-Route::get('/singleproduct',[ProductsController::class,'singleProduct'] )->name('sprod');
-Route::get('/shoppage',[ProductsController::class,'shopPage'] )->name('spage');
-Route::get('/cart',[CartController::class,'showCart'] )->name('scard');
-Route::get('/checkout',[CheckoutController::class,'showCheckout'] )->name('scheckout');
-Route::get('/contact',[ContactController::class,'showContact'] )->name('contact');
-Route::get('/admin1',[AdminController::class,'showDashboard'])->name('admin') ;
-Route::get('/admin/flot',[AdminController::class,'showFlotChart'])->name('flot') ;
-Route::get('/admin/moris',[AdminController::class,'showMorisChart'])->name('moris') ;
-Route::get('/admin/table',[AdminController::class,'showTable'])->name('table') ;
-Route::get('/admin/forms',[AdminController::class,'showForms'])->name('forms') ;
-Route::get('/admin/forms/product',[AdminController::class,'product'])->name('forms/product') ;
-Route::get('/admin/panels-wells',[AdminController::class,'showPanelWell'])->name('panel') ;
-Route::get('/admin/buttons',[AdminController::class,'showButton'])->name('buttons') ;
-Route::get('/admin/notifications',[AdminController::class,'showNotifi'])->name('noti') ;
-Route::get('/admin/typography',[AdminController::class,'showTypo'])->name('typo') ;
-Route::get('/admin/icons',[AdminController::class,'showIcons'])->name('icons') ;
-Route::get('/admin/grid',[AdminController::class,'showGrid'])->name('grid') ;
-Route::get('/admin/blank',[AdminController::class,'showBlank'])->name('blank');
-Route::get('/login',[AdminController::class,'showLogin'])->name('login');
+use App\Http\Middleware\IsAdmin;
+use App\Http\Controllers\Admin\LoginAdminController;
 
+Route::prefix('/')->group(function(){
+    require (__DIR__.'/dashboard.php');
+});
 
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send')
-->middleware(ValidateContact::class);;
+Route::prefix('shop')->group(function(){
+    require (__DIR__.'/shop_page.php');
+});
+Route::prefix('single-product')->group(function(){
+    require (__DIR__.'/single_product.php');
+});
+
+Route::prefix('cart')->group(function(){
+    require (__DIR__.'/cart.php');
+});
+
+Route::prefix('checkout')->group(function(){
+    require (__DIR__.'/checkout.php');
+});
+
+Route::prefix('contact')->group(function(){
+    require (__DIR__.'/contact.php');
+});
+Route::prefix('orthers')->group(function(){
+    require (__DIR__.'/orthers.php');
+});
+
+    // require(__DIR__.'/admin/login_admin.php');
+Route::get('admind/login', [LoginAdminController::class, 'showLogin'])->name('formLogin');
+Route::post('admind/login', [LoginAdminController::class, 'postLogin'])->name('postLogin');
+
+Route::prefix('admind')->middleware('isAdmin')->group(function(){
+    require (__DIR__.'/admin/logout_admin.php');
+    require (__DIR__.'/admin/dashboard.php');
+    require(__DIR__.'/admin/productAdmin.php');
+});
+// Route::prefix('api')->middleware('isAdmin')->group(function(){
+//     require (__DIR__.'/admin/dashboard.php');
+//     require(__DIR__.'/admin/productAdmin.php');
+// });
 

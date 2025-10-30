@@ -1,16 +1,18 @@
-@extends('layouts.layout')
-@section('active_Check')
-active
+@php
+    $Active="Checkout"
+@endphp
+@extends('layouts.layout_')
+@section('header')
+    @include('layouts.header')
+@endsection
+@section('footer')
+@include('layouts.footer')
 @endsection
 @section('title')
-Checkout
+Cart
 @endsection
-@section('nav')
-    <x-navcontent navcontent="Shopping-CheckOut" />
-@endsection
-
-@section('content')
-    <div class="single-product-area">
+@section('main')
+<div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
@@ -26,28 +28,28 @@ Checkout
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Products</h2>
                         <div class="thubmnail-recent">
-                            <img src="{{asset('img/product-thumb-1.jpg')}}" class="recent-thumb" alt="">
+                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$100.00</del>
                             </div>                             
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="{{asset('img/product-thumb-1.jpg')}}" class="recent-thumb" alt="">
+                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$100.00</del>
                             </div>                             
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="{{asset('img/product-thumb-1.jpg')}}" class="recent-thumb" alt="">
+                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$100.00</del>
                             </div>                             
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="{{asset('img/product-thumb-1.jpg')}}" class="recent-thumb" alt="">
+                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$100.00</del>
@@ -836,7 +838,7 @@ Checkout
                                             </li>
                                             <li class="payment_method_paypal">
                                                 <input type="radio" data-order_button_text="Proceed to PayPal" value="paypal" name="payment_method" class="input-radio" id="payment_method_paypal">
-                                                <label for="payment_method_paypal">PayPal <img alt="PayPal Acceptance Mark" src="{{asset('https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png')}}"><a title="What is PayPal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">What is PayPal?</a>
+                                                <label for="payment_method_paypal">PayPal <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png"><a title="What is PayPal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">What is PayPal?</a>
                                                 </label>
                                                 <div style="display:none;" class="payment_box payment_method_paypal">
                                                     <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    public function  showCheckout(){
-        return view("checkout");
+    public function index(){
+        return view('checkout');
     }
 }
