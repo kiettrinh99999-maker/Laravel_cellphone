@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Middleware;
-use Illuminate\Support\Facades\Route;
+
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+// use App\Http\Controllers\Admin\DashboardAdminController;
 class IsAdmin
 {
     /**
@@ -15,11 +15,11 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-         $user = session('user');// Lấy mảng user từ session
-        if (!$user || $user['role'] !== 'admin') {
-            // Nếu không phải admin thì redirect về login
-            return redirect()->route('loginAdmin');
-        } 
+        // Kiểm tra nếu không có session admin hoặc role không phải admin
+        if (!session('admin') || session('admin')['role'] != 'admin') {
+            return redirect()->route('formLogin');
+        }
+        
         return $next($request);
     }
 }

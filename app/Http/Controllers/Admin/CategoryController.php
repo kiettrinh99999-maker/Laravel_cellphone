@@ -1,26 +1,23 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-namespace App\Models\Category;
-
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\DB;
 
 class CategoryController extends Controller
 {
-    public function getForm($page_number=1)
-    {   
-        
-        return view("admin.product");
-    }
-    public function postForm(Request $request){
-        
-    }
-    public function update(Request $request){
-        
-    }
-    public function show(Request $request){
+    public function postCategoryApi(Request $request){
+        $db=DB::getInstance();
+        $name=$request->input('name');
+        $options=["name"=>$name];
+        $result=$db->insert('Categories',$options);
+        return response()->json([
+            'message' => 'Thêm thành công',
+            'name' => $name,
+            'id' => $result
+        ], 200)->header('Content-Type', 'application/json');
 
     }
 }
